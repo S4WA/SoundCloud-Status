@@ -12,3 +12,8 @@
 1. [スクリプト](https://raw.githubusercontent.com/S4WA/soundcloud-status/master/chrome/contents.js)をTampermonkeyに追加
 2. ``server/start.bat`` を実行
 3. SoundCloudを開く
+
+# 仕組み
+1. ブラウザからテキストを取る
+2. テキストをPythonのローカルサーバーにPOSTで送る
+3. POSTされたテキストをRich Presenceで使う
