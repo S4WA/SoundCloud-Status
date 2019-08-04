@@ -22,7 +22,7 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 			request = { "artist": request["artist"][0], "title": request["title"][0], "playing": CBool(request["playing"][0]) } # 雑がすぎる
 			# print(request)
 			if (request["playing"]):
-				RPC.update(state = "by " + request["artist"], details = request["title"], large_image = "icon", large_text = "made by dripnyan")
+				RPC.update(state = "by " + request["artist"], details = request["title"], large_image = "icon2", large_text = "made by dripnyan")
 			else:
 				RPC.clear()
 
