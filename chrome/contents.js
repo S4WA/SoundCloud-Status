@@ -18,12 +18,6 @@ function post2local() {
 			"playing": isPlaying()
 		}
 	})
-	// .done( (data) => {
-	// 	console.log("done:", data)
-	// } )
-	// .fail( (data) => {
-	// 	console.log("fail:", data)
-	// } )
 }
 
 window.onload = () => {
@@ -36,9 +30,7 @@ window.onload = () => {
 		}
 	});
 
-	setInterval(() => {
-		post2local()
-	}, 100);
+	setInterval(() => { post2local() }, 100);
 }
 
 function isPlaying() {
