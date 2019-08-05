@@ -19,19 +19,24 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 		self.end_headers()
 
 		if (request != {}):
-			request = { "artist": request["artist"][0], "title": request["title"][0], "playing": CBool(request["playing"][0]) } # 雑がすぎる
+			request = { "artist": request["artist"][0], "title": request["title"][0], "playing": CBool(request["playing"][0]), "start_time": request["start_time"][0], "end_time": request["end_time"][0], "current_time": request["current_time"][0] } # 雑がすぎる
 			# print(request)
 			if (request["playing"]):
-				RPC.update(state = "by " + request["artist"], details = request["title"], large_image = "icon2", large_text = "made by dripnyan")
+				RPC.update(
+					details = request["title"],
+					state = "by " + request["artist"],
+					large_image = "icon2",
+					large_text = "made by dripnyan"
+				)
 			else:
 				RPC.clear()
 
 		self.wfile.write(json.dumps({}).encode("utf-8"))
 
-def CBool( value ):
+def CBool(value):
 	if isinstance( value, str ) and value.lower() == "false":
 		return False
-	return bool( value )
+	return bool(value)
 
 server = HTTPServer(("", 8000), JsonResponseHandler)
 server.serve_forever()

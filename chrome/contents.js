@@ -8,6 +8,8 @@
 // @require      https://code.jquery.com/jquery-3.4.1.min.js
 // ==/UserScript==
 
+var start_time = Date.now(), last_title = "";
+
 function post2local() {
 	$.ajax({
 		url: "http://localhost:8000/",
@@ -15,7 +17,10 @@ function post2local() {
 		data: {
 			"artist": getArtist(),
 			"title": getTitle(),
-			"playing": isPlaying()
+			"playing": isPlaying(),
+			"start_time": start_time,
+			"current_time": getCurrentTime(),
+			"end_time": getEndTime()
 		}
 	})
 }
@@ -30,7 +35,13 @@ window.onload = () => {
 		}
 	});
 
-	setInterval(() => { post2local() }, 100);
+	setInterval(() => {
+		if (last_title != getTitle()) {
+			last_title = getTitle();
+			start_time = Date.now();
+		}
+		post2local()
+	}, 100);
 }
 
 function isPlaying() {
@@ -44,4 +55,12 @@ function getTitle() {
 
 function getArtist() {
 	return $("a.playbackSoundBadge__lightLink")[0].title;
+}
+
+function getCurrentTime() {
+	return $(".playbackTimeline__timePassed span[aria-hidden]").text();
+}
+
+function getEndTime() {
+	return $(".playbackTimeline__duration span[aria-hidden]").text();
 }
