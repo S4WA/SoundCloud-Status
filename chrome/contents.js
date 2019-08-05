@@ -30,7 +30,7 @@ window.onload = () => {
 		url: "http://localhost:8000/",
 		type: "post",
 		data: {},
-		complete: function(xhr, responseText, thrownError) {
+		complete: (xhr, responseText, thrownError) => {
 			local_available = (xhr.status == "200");
 		}
 	});
