@@ -23,6 +23,8 @@
 ![image4](https://github.com/S4WA/files/blob/master/soundcloud-status/Screenshot_4.png?raw=true)  
 
 ※ ``server\main.py``の中にある``export_to_file``を``True``にするとオン、``False``にするとオフにできる
+※ フォーマットは``server\main.py``の``text_format``で変えれる
+
 
 # 仕組み
 1. ブラウザからテキストを取る
