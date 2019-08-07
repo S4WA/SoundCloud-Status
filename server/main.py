@@ -23,8 +23,8 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 		self.end_headers()
 
 		global last_request
-		if (request != {} and request["title"][0] != last_request["title"]):
-			last_request = request = { # 雑がすぎる
+		if (request != {}):
+			request = { # 雑がすぎる
 				"artist": request["artist"][0],
 				"title": request["title"][0],
 				"playing": CBool(request["playing"][0]),
@@ -34,12 +34,15 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 				"artwork": request["artwork"][0]
 			}
 
-			print(request)
+			# print(request)
 
-			if (export_to_file):
-				exporter.write(text_format.replace("$title", request["title"]).replace("$artist", request["artist"]) )
-				if ("50x50" in request["artwork"]):
-					exporter.download_file(request["artwork"].replace("50x50", "500x500").replace("url(\"", "").replace("\")", ""))
+			if (request["title"][0] != last_request["title"]):
+				if (export_to_file):
+					exporter.write(text_format.replace("$title", request["title"]).replace("$artist", request["artist"]) )
+					if ("50x50" in request["artwork"]):
+						exporter.download_file(request["artwork"].replace("50x50", "500x500").replace("url(\"", "").replace("\")", ""))
+
+			last_request = request
 
 			if (request["playing"]):
 				RPC.update(
