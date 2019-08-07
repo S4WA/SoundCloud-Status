@@ -4,7 +4,7 @@ from pypresence import Presence
 from urllib.parse import parse_qs
 
 client_id = "607560852228407326"
-export_to_file = True
+export_to_file = False
 text_format = "$title by $artist"
 last_request = {"title": ""}
 
