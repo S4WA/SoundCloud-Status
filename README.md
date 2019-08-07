@@ -11,8 +11,18 @@
 
 # インストール
 1. [スクリプト](https://github.com/S4WA/soundcloud-status/raw/master/chrome/contents.user.js)をTampermonkeyに追加
-2. ``server/start.bat`` を実行
+2. ``server\start.bat`` を実行
 3. SoundCloudを開く
+
+# OBS
+![image3](https://github.com/S4WA/files/blob/master/soundcloud-status/Screenshot_3.png?raw=true)  
+``soundcloud-status\server``にある  
+- ``artwork.jpg``  
+- ``export.txt``  
+を追加する  
+![image4](https://github.com/S4WA/files/blob/master/soundcloud-status/Screenshot_4.png?raw=true)  
+
+※ ``server\main.py``の中にある``export_to_file``を``True``にするとオン、``False``にするとオフにできる
 
 # 仕組み
 1. ブラウザからテキストを取る
