@@ -1,9 +1,13 @@
-import sys, json, datetime
+import sys, json, datetime, exporter
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pypresence import Presence
 from urllib.parse import parse_qs
 
 client_id = "607560852228407326"
+export_to_file = True
+text_format = "$title by $artist"
+last_request = {"title": ""}
+
 RPC = Presence(client_id)
 RPC.connect()
 
@@ -18,16 +22,25 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 		self.send_header("Access-Control-Allow-Origin", "*")
 		self.end_headers()
 
-		if (request != {}):
-			request = { # 雑がすぎる
+		global last_request
+		if (request != {} and request["title"][0] != last_request["title"]):
+			last_request = request = { # 雑がすぎる
 				"artist": request["artist"][0],
 				"title": request["title"][0],
 				"playing": CBool(request["playing"][0]),
-				"start_time": int(request["start_time"][0]),
-				"end_time": request["end_time"][0],
-				"current_time": request["current_time"][0]
+				# "start_time": int(request["start_time"][0]),
+				# "end_time": request["end_time"][0],
+				# "current_time": request["current_time"][0],
+				"artwork": request["artwork"][0]
 			}
-			# print(request)
+
+			print(request)
+
+			if (export_to_file):
+				exporter.write(text_format.replace("$title", request["title"]).replace("$artist", request["artist"]) )
+				if ("50x50" in request["artwork"]):
+					exporter.download_file(request["artwork"].replace("50x50", "500x500").replace("url(\"", "").replace("\")", ""))
+
 			if (request["playing"]):
 				RPC.update(
 					details = request["title"],
@@ -36,7 +49,6 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 					large_text = "made by dripnyan",
 					pid = 10
 				)
-				datetime.datetime.strptime(request["current_time"], "%M:%S")
 			else:
 				RPC.clear()
 

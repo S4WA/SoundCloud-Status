@@ -121,3 +121,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+server/artwork.jpg
+server/export.txt

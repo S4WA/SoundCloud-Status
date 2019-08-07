@@ -18,9 +18,10 @@ function post2local() {
 			"artist": getArtist(),
 			"title": getTitle(),
 			"playing": isPlaying(),
-			"start_time": start_time,
-			"current_time": getCurrentTime(),
-			"end_time": getEndTime()
+			// "start_time": start_time,
+			// "current_time": getCurrentTime(),
+			// "end_time": getEndTime(),
+			"artwork": getArtwork()
 		}
 	})
 }
@@ -40,7 +41,7 @@ window.onload = () => {
 			last_title = getTitle();
 			start_time = Date.now();
 		}
-		post2local()
+		post2local();
 	}, 100);
 }
 
@@ -63,4 +64,8 @@ function getCurrentTime() {
 
 function getEndTime() {
 	return $(".playbackTimeline__duration span[aria-hidden]").text();
+}
+
+function getArtwork() {
+	return $(".playbackSoundBadge span.sc-artwork").css("background-image");
 }
