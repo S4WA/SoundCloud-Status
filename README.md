@@ -28,5 +28,5 @@
 
 # 仕組み
 1. ブラウザからテキストを取る
-2. テキストをPythonのローカルサーバーにPOSTで送る
+2. テキストをPythonのローカルサーバー(localhost:8000)にPOSTで送る
 3. POSTされたテキストをRich Presenceで使う
