@@ -1,9 +1,11 @@
-import json, datetime, exporter, os, settings, atexit
+import json, os, atexit
+import exporter, settings
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pypresence import Presence
 from urllib.parse import parse_qs
 from reset import Reset
 
+count = 1
 atexit.register(Reset)
 
 client_id = settings.RPC().getClientID()
@@ -24,12 +26,13 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 		self.send_header("Access-Control-Allow-Origin", "*")
 		self.end_headers()
 
-		global last_request
+		global last_request, count
 		if (request != {}):
 			request = conv(request)
 
 			if (request["title"] != last_request["title"]):
-				print(request["title"], "by", request["artist"])
+				print(str(count) + ":", request["title"], "by", request["artist"])
+				count += 1
 				if (settings.Export().isEnabled()):
 					exporter.write(
 						settings.Export().getFormat().replace("$title", request["title"]).replace("$artist", request["artist"])
