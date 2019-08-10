@@ -1,10 +1,10 @@
-import sys, json, datetime, exporter
+import json, datetime, exporter, os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pypresence import Presence
 from urllib.parse import parse_qs
 
 client_id = "607560852228407326"
-export_to_file = False
+export_to_file = True
 text_format = "$title by $artist"
 last_request = {"title": ""}
 
@@ -34,13 +34,15 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 				"artwork": request["artwork"][0]
 			}
 
-			# print(request)
-
-			if (request["title"][0] != last_request["title"]):
+			if (request["title"] != last_request["title"]):
+				print(request["title"], "by", request["artist"])
 				if (export_to_file):
 					exporter.write(text_format.replace("$title", request["title"]).replace("$artist", request["artist"]) )
+
 					if ("50x50" in request["artwork"]):
 						exporter.download_file(request["artwork"].replace("50x50", "500x500").replace("url(\"", "").replace("\")", ""))
+					elif (os.path.exists("artwork.jpg")):
+						os.remove("artwork.jpg")
 
 			last_request = request
 
@@ -54,8 +56,9 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 				)
 			else:
 				RPC.clear()
-
 		self.wfile.write(json.dumps(request).encode("utf-8"))
+	def log_message(self, format, *args):
+		return
 
 def CBool(value):
 	if isinstance( value, str ) and value.lower() == "false":
