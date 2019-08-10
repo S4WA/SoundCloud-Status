@@ -9,6 +9,8 @@
    - [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
      - [Script](https://github.com/S4WA/soundcloud-status/raw/master/chrome/contents.user.js)
 
+※ Windowsでしか確認してません
+
 # インストール
 1. [スクリプト](https://github.com/S4WA/soundcloud-status/raw/master/chrome/contents.user.js)をTampermonkeyに追加
 2. ``server\start.bat`` を実行
