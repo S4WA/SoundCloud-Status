@@ -47,7 +47,7 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 
 			last_request = request
 
-			if (settings.RPC().isEnabled() and request["playing"]):
+			if (settings.RPC().isEnabled() and CBool(request["playing"])):
 				RPC.update(
 					details = request["title"],
 					state = "by " + request["artist"],
