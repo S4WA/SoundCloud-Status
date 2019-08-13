@@ -67,15 +67,8 @@ def CBool(value):
 	return bool(value)
 
 def conv(request):
-	return { # 雑がすぎる
-		"artist": request["artist"][0],
-		"title": request["title"][0],
-		"playing": CBool(request["playing"][0]),
-		# "start_time": int(request["start_time"][0]),
-		# "end_time": request["end_time"][0],
-		# "current_time": request["current_time"][0],
-		"artwork": request["artwork"][0]
-	}
+	request = json.dumps(request).replace("[", "").replace("]", "")
+	return json.loads(request)
 
 try:
 	server = HTTPServer(("", 8000), JsonResponseHandler)
