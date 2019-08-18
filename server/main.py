@@ -56,6 +56,7 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 				)
 			else:
 				RPC.clear()
+				
 		self.wfile.write(json.dumps(request).encode("utf-8"))
 
 	def log_message(self, format, *args):
