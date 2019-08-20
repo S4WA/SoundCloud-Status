@@ -51,7 +51,7 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
 				RPC.update(
 					details = request["title"],
 					state = "by " + request["artist"],
-					large_image = "icon2",
+					large_image = "icon",
 					large_text = "made by dripnyan"
 				)
 			else:
