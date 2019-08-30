@@ -5,6 +5,7 @@
 # 環境
  - Python 3.7.4
    - [pypresence](https://github.com/qwertyquerty/pypresence)
+   - [urllib3](https://github.com/urllib3/urllib3)
  - Browser
    - [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
      - [Script](https://github.com/S4WA/soundcloud-status/raw/master/chrome/contents.user.js)
