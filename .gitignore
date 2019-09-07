@@ -125,3 +125,4 @@ dmypy.json
 # SoundCloud Status
 server/artwork.jpg
 server/export.txt
+server/config.ini
