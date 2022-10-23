@@ -1,3 +1,8 @@
+# This is OUTDATED!
+This project is outdated since 2019.
+
+If you still want to use similar thing for streaming (obs and other streaming softwares), You can use [This extension](https://chrome.google.com/webstore/detail/soundcloud-player/oackhlcggjandamnkggpfhfjbnecefej) ( [github page](https://github.com/S4WA/SoundCloud-Player) ) instead of this. ([DETAILS (github wiki)](https://github.com/S4WA/SoundCloud-Player/wiki/For-Streamers-Gamers))
+
 # Soundcloud Status
 ![image1](https://github.com/S4WA/files/blob/master/soundcloud-status/Screenshot_1.png?raw=true)  
 ![image2](https://github.com/S4WA/files/blob/master/soundcloud-status/Screenshot_2.png?raw=true)  
