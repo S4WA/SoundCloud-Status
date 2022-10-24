@@ -1,6 +1,4 @@
-# This is OUTDATED!
-This project is **outdated** since 2019.
-
+# This is DISCONTINUED!
 If you still want to use _**similar thing for streaming**_ (obs and other streaming softwares), You can use [_**This extension**_](https://chrome.google.com/webstore/detail/soundcloud-player/oackhlcggjandamnkggpfhfjbnecefej) ( [_github page_](https://github.com/S4WA/SoundCloud-Player) ) instead of this. But **without Discord Status** function. [Details (github wiki)](https://github.com/S4WA/SoundCloud-Player/wiki/For-Streamers-and-Gamers).
 
 # Soundcloud Status
